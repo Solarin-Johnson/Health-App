@@ -1,0 +1,25 @@
+#container{
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    #image{
+        background: #F2F6FF;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+
+        #img{
+            background-color: #fff;
+            border-bottom-right-radius: 100px;
+        }
+    }
+
+    #auth{
+        background-color: #F2F6FF;
+        border-top-left-radius: 100px;
+    }
+}

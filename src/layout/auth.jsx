@@ -1,6 +1,6 @@
 import { useState } from "react"
-import Login from "./login/login"
-import Index from "./index"
+import Login from "../authentication/login/login"
+import Index from "../authentication/index/index"
 function Auth(){
     const [authType, setAuthType] = useState('index')
     const indicate = (data) => {
