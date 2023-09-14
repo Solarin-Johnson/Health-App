@@ -6,7 +6,7 @@
     display: grid;
     grid-template-rows: 1fr 500px;
     grid-template-columns: 1fr;
-
+    user-select: none;
     #image{
         background: #F2F6FF;
         display: grid;
@@ -36,8 +36,8 @@
             #bar{
                 background-color: #01B399;
                 width: 70px;
-                margin-left: 45px;
-                border-radius: 200px ;
+                border-radius: 200px;
+                transition: .2s ease-out all;
             }
             .options{
                 display: grid;
@@ -68,11 +68,12 @@
                     justify-content: center;
                     height: 250px;
                     display: grid;
-                    grid-template-rows: repeat(3, 70px);
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                     grid-template-columns: 1fr;
                     grid-gap: 20px;
 
                     #fullname, #email, #pwd{
+                        transition: 1s ease-in all;
                         display: grid;
                         justify-self: center;
                         width: 85%;
@@ -100,13 +101,17 @@
                     font-size: 18px;
                     color: #fff;
                     justify-self: center;
-                    width: 250px;
+                    width: 300px;
                     height: 50px;
                     text-align: center;
                     border-radius: 10px;
+                    font-weight: normal;
+                    cursor: pointer;
                 }
                 #quest{
+                    font-size: 15px;
                     text-align: center;
+                    cursor: pointer;
                 }
 
 
@@ -148,7 +153,7 @@
                     }
                 }
                 #btn{
-                    width: 80%;
+                    width: 82%;
                 }
                 }
             }
