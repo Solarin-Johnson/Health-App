@@ -59,29 +59,29 @@
                 border-top-left-radius: 30px;
                 border-top-right-radius: 30px;
                 display: grid;
-                grid-template-rows: 320px 50px 30px;
+                grid-template-rows: 300px 50px 50px;
                 grid-gap: 10px;
                 align-items: center;
 
-                #info, #btn{
-                    margin-left: 50px;
-                }
                 
                 #info{
+                    justify-content: center;
                     height: 250px;
                     display: grid;
                     grid-template-rows: repeat(3, 70px);
+                    grid-template-columns: 1fr;
                     grid-gap: 20px;
 
                     #fullname, #email, #pwd{
+                        display: grid;
+                        justify-self: center;
+                        width: 85%;
                         color: #385A64;
                         display: grid;
                         grid-template-rows: 30px 30px;
 
                         input{
-                            min-width: 150px;
-                            width: 80%;
-                            max-width: 500px;
+                            width: 100%;
                             border: 2px solid transparent;
                             border-bottom-color: #385A64;
                             background-color: transparent;
@@ -93,8 +93,20 @@
                         
                     }
                 }
-                    #quest{
-                        text-align: center;
+                #btn{
+                    background-color: #385A64;
+                    display: grid;
+                    align-content: center;
+                    font-size: 18px;
+                    color: #fff;
+                    justify-self: center;
+                    width: 250px;
+                    height: 50px;
+                    text-align: center;
+                    border-radius: 10px;
+                }
+                #quest{
+                    text-align: center;
                 }
 
 
@@ -129,6 +141,15 @@
                     border-top-right-radius: 10px;
                     border-radius: 20px;
                     background-color: #fff;
+                    
+                #info{ 
+                    #fullname, #email, #pwd{
+                    width: 80%;
+                    }
+                }
+                #btn{
+                    width: 80%;
+                }
                 }
             }
         }
