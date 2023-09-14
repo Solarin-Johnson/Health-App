@@ -1,6 +1,7 @@
 import { useState } from "react"
-import Login from "../authentication/login/login"
-import Index from "../authentication/index/index"
+import Login from "../pages/authentication/form/login"
+import Index from "../pages/authentication/index/index"
+import SignUp from "../pages/authentication/form/signup"
 function Auth(){
     const [authType, setAuthType] = useState('index')
     const indicate = (data) => {
@@ -8,11 +9,17 @@ function Auth(){
     }
     if(authType === 'index'){
         return(
-            <Index authType={indicate} />
+            <Index _indicate={indicate} />
         )
-    } else if(authType === 'login'){
+    }
+    if(authType === 'login'){
         return(
             <Login />
+        )
+    }
+    if(authType === 'signup'){
+        return(
+            <SignUp />
         )
     }
 }
