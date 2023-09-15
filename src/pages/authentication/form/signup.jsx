@@ -138,7 +138,7 @@ function SignUp({getToken}){
                             <input value={pwd} required minLength={8} type="password" onChange={password} placeholder=''/>
                         </div>
                     </div>
-                    <button type='submit' id="btn">{btnValue}</button>
+                    <input value={btnValue} type='submit' id="btn"/>
                     <div id="quest">{quest}</div>
                 </form>
             </div>
