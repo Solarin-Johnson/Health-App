@@ -37,7 +37,6 @@ function SignUp({getToken}){
         headers: {
             'Content-Type': 'application/json',
         }        };
-        // try {
         
         const response = await axios.post(url, {
             "first_name": fname,
@@ -56,15 +55,7 @@ function SignUp({getToken}){
           } catch (error) {
                 console.log(error)
           }
-          // if (response.ok) {
-        //     const responseData = await response.json();
-        //     console.log('Response from server:', responseData);
-        // } else {
-        //     console.error('Request failed with status:', response.status);
-        // }
-        // } catch (error) {
-        // console.error('Error:', error);
-        // }
+        
         toogle_i()
     } else {
         const url = 'https://fastapiauth-1-c1213112.deta.app/user/login';
