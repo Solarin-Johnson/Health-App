@@ -7,13 +7,13 @@ import Dashboard from './layout/dashboard';
 function App() {
   const [isLogin, setIsLogin] = useState(false)
   const getToken = (data) => {
-
+    setIsLogin(data)
   }
   return (
     (isLogin ? (
       <Dashboard token={getToken} />
     ) : (
-      <Auth />
+      <Auth token={setIsLogin} />
     ))
   );
 }
