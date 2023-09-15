@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './signup.scss'
-function SignUp(){
+function SignUp({getToken}){
     const[btnValue, setBtnValue] = useState('Sign Up')
     const[slideValue, setSlideValue] = useState('45px')
     const[fname, setFname] = useState('')
@@ -9,7 +9,7 @@ function SignUp(){
     const[pwd, setPwd] = useState('')
     const[quest, setQuest] = useState('Already have an account?')
     const[err, setErr] = useState('')
-
+    const[token, setToken] = useState('')
     const clearErr = () =>{
         setTimeout(() => {
             setErr('')
@@ -79,9 +79,13 @@ function SignUp(){
             "email": mail,
             "password": pwd
           });
-
+          console.log(response.data)
         if (response.data.details === 'Network Error') {
             setErr('User Not Found')
+          } else if( response.data.access_token){
+                setErr('User Logged In')
+                setToken(response.data.access_token)
+                getToken(response.data.access_token)
           } else {
            setErr('Incorrect Password')
           }

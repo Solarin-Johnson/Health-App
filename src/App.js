@@ -2,12 +2,16 @@ import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Auth from './layout/auth';
+import Dashboard from './layout/dashboard';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false)
+  const getToken = (data) => {
+
+  }
   return (
     (isLogin ? (
-      <Auth />
+      <Dashboard token={getToken} />
     ) : (
       <Auth />
     ))

@@ -1,7 +1,6 @@
 import './index.scss'
 import '../../../images/signin.png'
 import '../../../images/signup.png'
-import Login from '../form/login'
 import { useEffect, useState } from 'react'
 function Index({_indicate}){
     const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
@@ -34,8 +33,8 @@ function Index({_indicate}){
             <div id="auth">
                 <span id='welcome'></span>
                 <div id="options">
-                    <div id="signin">Sign In</div>
-                    <div id="signup" onClick={signup}>Sign Up</div>
+                    <div id="signup" onClick={signup}>Create New Account</div>
+                    <div id="signin"  onClick={signup}>Login</div>
                 </div>
             </div>
         </div>
