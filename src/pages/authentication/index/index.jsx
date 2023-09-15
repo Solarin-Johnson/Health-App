@@ -28,7 +28,7 @@ function Index({_indicate}){
         <div id="container">
             <div id="image">
                 <div id="img">
-            
+
                 </div>
             </div>
             <div id="auth">
@@ -41,7 +41,9 @@ function Index({_indicate}){
         </div>
     )
     } else {
-        signup()
+            <>
+            {signup()}
+            </>
     }
 }
 
