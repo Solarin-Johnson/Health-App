@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 import './signup.scss'
 function SignUp(){
     const[btnValue, setBtnValue] = useState('Sign Up')
@@ -7,12 +8,14 @@ function SignUp(){
     const[mail, setMail] = useState('')
     const[pwd, setPwd] = useState('')
     const[quest, setQuest] = useState('Already have an account?')
+    const [formData, setFormData] = useState({
+        first_name: fname,
+        last_name: null,
+        email: mail,
+        password: pwd
+      });
+
     
-    function validateEmail(email) {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      
-        return emailRegex.test(email);
-    }
 
     const fullname = (e) =>{
         setFname(e.target.value)
@@ -22,27 +25,63 @@ function SignUp(){
     }
     const password = (e) =>{
         setPwd(e.target.value)
-        e.target.value = pwd
     }
 
-    const toogle = () =>{
-        if(btnValue === 'Sign Up'){
-            if(fname.length <= 2){
-                alert(`' ${fname} ' is too short for a Username`)
-            } else if(!validateEmail(mail)){
-                alert(`' ${mail} ' is an invalid mail address`)
-            }else if(pwd.length <= 8){
-                alert(`Password should be more than 8 characters long`)
-            } else {
-                toogle_i()
-                
-            }
-        }
+    const submit = async (event) =>{
+        event.preventDefault();
+
+        if(btnValue === 'Sign Up'){       
+            
+        const url = 'https://fastapiauth-1-c1213112.deta.app/user/register';
+        const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }        };
+        // try {
+        
+        const response = await axios.post(url, {
+            "first_name": fname,
+            "last_name": "",
+            "email": mail,
+            "password": pwd
+          });
+        console.log(response)
+          alert(response.data)
+        // if (response.ok) {
+        //     const responseData = await response.json();
+        //     console.log('Response from server:', responseData);
+        // } else {
+        //     console.error('Request failed with status:', response.status);
+        // }
+        // } catch (error) {
+        // console.error('Error:', error);
+        // }
+        toogle_i()
+    } else {
+        const url = 'https://fastapiauth-1-c1213112.deta.app/user/login';
+        const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }        
+    };
+        // try {
+        
+        const response = await axios.post(url, {
+            "email": mail,
+            "password": pwd
+          });
+        console.log(response)
+        alert('User Logged In')
+    }
+
     }
     const toogle_u = () => {
         setBtnValue('Sign Up')
         setQuest('Already have an account?')
         setSlideValue('45px')
+        setPwd('')
     }
     
     const toogle_i = () => {
@@ -68,8 +107,8 @@ function SignUp(){
                     <span onClick={toogle_u}>Sign Up</span> <span onClick={toogle_i}>Sign In</span>
                 </div>
                 <div id="bar" style={slide}></div>
-                <div className="form">
-                    <div id="info">
+                <form onSubmit={submit} className="form">
+                    <div  id="info">
                         {(btnValue === 'Sign In' ? (
                             <>
                             </>
@@ -77,22 +116,22 @@ function SignUp(){
                             <>
                         <div id="fullname">
                             <span>Full Name</span>
-                            <input type="text" onChange={fullname} placeholder='' autoComplete='true'/>
+                            <input type="text" minLength={3} required onChange={fullname} placeholder='' />
                         </div>
                             </>
                         ))}
                         <div id="email">
                             <span>E-mail</span>
-                            <input type="text" onChange={email} placeholder='' autoComplete='true'/>
+                            <input type="email" required onChange={email} placeholder='' autoComplete='true'/>
                         </div>
                         <div id="pwd">
                             <span>Password</span>
-                            <input value={pwd} type="password" onChange={password} placeholder=''/>
+                            <input value={pwd} required minLength={8} type="password" onChange={password} placeholder=''/>
                         </div>
                     </div>
-                    <div id="btn"onClick={toogle}>{btnValue}</div>
+                    <button type='submit' id="btn">{btnValue}</button>
                     <div id="quest">{quest}</div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
