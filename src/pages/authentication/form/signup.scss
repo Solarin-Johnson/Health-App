@@ -59,16 +59,26 @@
                 border-top-left-radius: 30px;
                 border-top-right-radius: 30px;
                 display: grid;
-                grid-template-rows: 300px 50px 50px;
-                grid-gap: 10px;
+                grid-template-rows: 40px 260px 80px 1fr;
+                grid-template-columns: 1fr;
+                grid-gap: 1px;
                 align-items: center;
 
+                #err{
+                    font-weight: bold;
+                    display: grid;
+                    font-size: 14px;
+                    height: 100%;
+                    align-content: center;
+                    text-align: center;
+                    color: #385A64;
+                }
                 
                 #info{
                     justify-content: center;
                     height: 250px;
                     display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    grid-template-rows: repeat(auto-fill, minmax(50px, 100px));
                     grid-template-columns: 1fr;
                     grid-gap: 20px;
 
@@ -153,7 +163,7 @@
                     }
                 }
                 #btn{
-                    width: 82%;
+                    width: 83%;
                 }
                 }
             }

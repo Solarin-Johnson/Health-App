@@ -8,14 +8,13 @@ function SignUp(){
     const[mail, setMail] = useState('')
     const[pwd, setPwd] = useState('')
     const[quest, setQuest] = useState('Already have an account?')
-    const [formData, setFormData] = useState({
-        first_name: fname,
-        last_name: null,
-        email: mail,
-        password: pwd
-      });
+    const[err, setErr] = useState('')
 
-    
+    const clearErr = () =>{
+        setTimeout(() => {
+            setErr('')
+        }, 5000);
+    }
 
     const fullname = (e) =>{
         setFname(e.target.value)
@@ -46,9 +45,18 @@ function SignUp(){
             "email": mail,
             "password": pwd
           });
-        console.log(response)
-          alert(response.data)
-        // if (response.ok) {
+          try {
+              console.log(response)
+              if (typeof response.data != 'string') {
+                  setErr(response.data.details)
+                } else {
+                  setErr(response.data)
+                }        
+            clearErr()
+          } catch (error) {
+                console.log(error)
+          }
+          // if (response.ok) {
         //     const responseData = await response.json();
         //     console.log('Response from server:', responseData);
         // } else {
@@ -65,15 +73,20 @@ function SignUp(){
         headers: {
             'Content-Type': 'application/json',
         }        
-    };
-        // try {
+        };
         
         const response = await axios.post(url, {
             "email": mail,
             "password": pwd
           });
-        console.log(response)
-        alert('User Logged In')
+
+        if (response.data.details === 'Network Error') {
+            setErr('User Not Found')
+          } else {
+           setErr('Incorrect Password')
+          }
+          clearErr()
+
     }
 
     }
@@ -107,7 +120,8 @@ function SignUp(){
                     <span onClick={toogle_u}>Sign Up</span> <span onClick={toogle_i}>Sign In</span>
                 </div>
                 <div id="bar" style={slide}></div>
-                <form onSubmit={submit} className="form">
+                <form onSubmit={submit} autoComplete='on' className="form">
+                <div id="err">{err}</div>
                     <div  id="info">
                         {(btnValue === 'Sign In' ? (
                             <>
