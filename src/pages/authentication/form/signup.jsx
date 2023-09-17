@@ -13,8 +13,9 @@ function SignUp({getToken}){
     const clearErr = () =>{
         setTimeout(() => {
             setErr('')
-        }, 5000);
+        }, 3000);
     }
+    
 
     const fullname = (e) =>{
         setFname(e.target.value)
@@ -88,6 +89,7 @@ function SignUp({getToken}){
     const toogle_u = () => {
         setBtnValue('Sign Up')
         setQuest('Already have an account?')
+        
         setSlideValue('45px')
         setPwd('')
     }
@@ -95,13 +97,22 @@ function SignUp({getToken}){
     const toogle_i = () => {
         setBtnValue('Sign In')
         setSlideValue('140px')
-        setQuest('Forgotten Password?')
+        setQuest('Do not have an account?')
         setPwd('')
     }
 
     const slide = {
         marginLeft: slideValue
     }
+
+    const questResponse = () =>{
+        if(quest.length === 24){
+            toogle_i()
+        }  else{
+            toogle_u()
+        }
+    }
+
     return(
         <div id="form_container">
         <div id="image">
@@ -139,7 +150,7 @@ function SignUp({getToken}){
                         </div>
                     </div>
                     <input value={btnValue} type='submit' id="btn"/>
-                    <div id="quest">{quest}</div>
+                    <div id="quest" onClick={questResponse}>{quest}</div>
                 </form>
             </div>
         </div>

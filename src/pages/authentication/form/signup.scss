@@ -17,14 +17,14 @@
             background-color: #fff;
             background-image: url(../../../images/logo.png);
             background-repeat: no-repeat;
-            background-size: 200px;
+            background-size: 150px;
             background-position: center;        
         }
     }
 
     #auth{
         display: grid;
-        grid-template-rows:  480px;
+        grid-template-rows:  500px;
         grid-template-columns: 1fr;
         align-content: center;
         justify-content: center;
@@ -197,9 +197,4 @@
     background-color: #989898;
   }
 
-  @media screen and (min-height: 700px) {
-    #form_container{
-        width: 100vw;
-        position: fixed;
-    }
-  }
+  

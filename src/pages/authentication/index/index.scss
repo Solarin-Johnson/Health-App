@@ -76,8 +76,12 @@
                 }
         }
         #t_c{
-            display: block;
+            display: grid;
             font-size: 12px;
+            color: #385A64;
+            text-align: center;
+            align-content: last baseline;
+            margin-top: 20px;
         }
     }
 }

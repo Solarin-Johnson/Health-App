@@ -20,9 +20,7 @@ function Index({_indicate}){
     }, []);
 
     // const [currentState,setCurrentState] = useState('index')
-    if(browserWidth < 700){
-
-        
+    
         return(
         <div id="container">
             <div id="image">
@@ -43,11 +41,7 @@ function Index({_indicate}){
             </div>
         </div>
     )
-    } else {
-            <>
-            {signup()}
-            </>
-    }
+   
 }
 
 export default Index
