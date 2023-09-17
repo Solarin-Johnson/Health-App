@@ -77,6 +77,7 @@ function SignUp({getToken}){
           } else if( response.data.access_token){
                 setErr('User Logged In')
                 setToken(response.data.access_token)
+                sessionStorage.setItem('token', response.data.access_token)
                 getToken(response.data.access_token)
           } else {
            setErr('Incorrect Password')
@@ -104,6 +105,8 @@ function SignUp({getToken}){
     const slide = {
         marginLeft: slideValue
     }
+    
+   
 
     const questResponse = () =>{
         if(quest.length === 24){
@@ -153,6 +156,7 @@ function SignUp({getToken}){
                     <div id="quest" onClick={questResponse}>{quest}</div>
                 </form>
             </div>
+            <div id="loader"></div>
         </div>
     </div>
     )
