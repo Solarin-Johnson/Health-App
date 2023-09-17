@@ -31,10 +31,14 @@ function Index({_indicate}){
                 </div>
             </div>
             <div id="auth">
-                <span id='welcome'></span>
+                <div id='welcome'><span>Welcome to</span> <br/> <span>LifeSphere</span></div>
+                <div id="motto">Your LifeSpere, Where Health Flourishes</div>
                 <div id="options">
                     <div id="signup" onClick={signup}>Create New Account</div>
                     <div id="signin"  onClick={signup}>Login</div>
+                </div>
+                <div id="t_c">By using this website, you agree to our Terms and Conditions. 
+                    Your continued use implies acceptance of our Privacy Policy.
                 </div>
             </div>
         </div>
