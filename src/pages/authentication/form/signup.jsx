@@ -10,6 +10,7 @@ function SignUp({getToken}){
     const[quest, setQuest] = useState('Already have an account?')
     const[err, setErr] = useState('')
     const[token, setToken] = useState('')
+    const[isLoading, setIsLoading] = useState(false)
     const clearErr = () =>{
         setTimeout(() => {
             setErr('')
@@ -28,6 +29,7 @@ function SignUp({getToken}){
     }
 
     const submit = async (event) =>{
+        setIsLoading(true)
         event.preventDefault();
 
         if(btnValue === 'Sign Up'){       
@@ -52,9 +54,11 @@ function SignUp({getToken}){
                 } else {
                   setErr(response.data)
                 }        
+                setIsLoading(false)
             clearErr()
           } catch (error) {
                 console.log(error)
+
           }
         
         toogle_i()
@@ -74,13 +78,19 @@ function SignUp({getToken}){
           console.log(response.data)
         if (response.data.details === 'Network Error') {
             setErr('User Not Found')
+            setIsLoading(false)
+
           } else if( response.data.access_token){
                 setErr('User Logged In')
                 setToken(response.data.access_token)
                 sessionStorage.setItem('token', response.data.access_token)
                 getToken(response.data.access_token)
+            setIsLoading(false)
+
           } else {
            setErr('Incorrect Password')
+           setIsLoading(false)
+
           }
           clearErr()
 
@@ -156,7 +166,13 @@ function SignUp({getToken}){
                     <div id="quest" onClick={questResponse}>{quest}</div>
                 </form>
             </div>
-            <div id="loader"></div>
+            {isLoading ? (
+            <div id="loader">
+                <div className="loader"></div>
+            </div>
+            ) : (
+                <></>
+            )}
         </div>
     </div>
     )
