@@ -34,7 +34,7 @@ function SignUp({getToken}){
 
         if(btnValue === 'Sign Up'){       
             
-        const url = 'https://fastapiauth-1-c1213112.deta.app/user/register';
+        const url = 'https://fastapiauth-1-n6847572.deta.app/user/register';
         const requestOptions = {
         method: 'POST',
         headers: {
@@ -63,7 +63,7 @@ function SignUp({getToken}){
         
         toogle_i()
     } else {
-        const url = 'https://fastapiauth-1-c1213112.deta.app/user/login';
+        const url = 'https://fastapiauth-1-n6847572.deta.app/user/login';
         const requestOptions = {
         method: 'POST',
         headers: {
@@ -85,7 +85,7 @@ function SignUp({getToken}){
                 setToken(response.data.access_token)
                 sessionStorage.setItem('token', response.data.access_token)
                 getToken(response.data.access_token)
-            setIsLoading(false)
+                setIsLoading(false)
 
           } else {
            setErr('Incorrect Password')
